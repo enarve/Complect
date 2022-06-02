@@ -1,0 +1,94 @@
+[
+    {
+        "name": "Комплект на понедельник",
+        "text": "Этот комплект приготовлен на понедельник",
+        "day": 1,
+        "collected": false,
+        "items": [
+            {
+                "name": "Часы",
+                "quantity": 1,
+                "isRequired": true
+            },
+            {
+                "name": "English grammar",
+                "quantity": 1,
+                "isRequired": true
+            },
+            {
+                "name": "Объект в коробочке № 1",
+                "quantity": 1,
+                "isRequired": true
+            },
+            {
+                "name": "Объект в коробочке № 34",
+                "quantity": 1,
+                "isRequired": false
+            }
+        ]
+    },
+    {
+        "name": "Второй комплект на понедельник",
+        "text": "Этот комплект тоже приготовлен на понедельник",
+        "day": 1,
+        "collected": false,
+        "items": [
+            {
+                "name": "Мир животных",
+                "quantity": 1,
+                "isRequired": true
+            },
+            {
+                "name": "Ботинки «Loake»",
+                "quantity": 2,
+                "isRequired": true
+            }
+        ]
+    },
+    {
+        "name": "Complect",
+        "text": "Hello",
+        "day": 1,
+        "collected": false,
+        "items": [
+            {
+                "name": "Friend",
+                "quantity": 139,
+                "isRequired": true
+            },
+            {
+                "name": "Two straws",
+                "quantity": 2,
+                "isRequired": true
+            }
+        ]
+    },
+    {
+        "name": "Комплект для Лёши",
+        "text": "Передать Лёше",
+        "day": 2,
+        "collected": false,
+        "items": [
+            {
+                "name": "Зонт",
+                "quantity": 1,
+                "isRequired": true
+            },
+            {
+                "name": "Макароны",
+                "quantity": 3,
+                "isRequired": false
+            },
+            {
+                "name": "Гитара",
+                "quantity": 1,
+                "isRequired": true
+            },
+            {
+                "name": "Коннектор USB-C",
+                "quantity": 1,
+                "isRequired": true
+            }
+        ]
+    }
+]

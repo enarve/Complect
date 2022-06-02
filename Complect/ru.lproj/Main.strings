@@ -1,0 +1,36 @@
+
+/* Class = "UILabel"; text = "Winnie the Pooh"; ObjectID = "8c8-tD-TFw"; */
+"8c8-tD-TFw.text" = "Winnie the Pooh";
+
+/* Class = "UILabel"; text = "Список пуст"; ObjectID = "FF5-6j-nuS"; */
+"FF5-6j-nuS.text" = "Список пуст";
+
+/* Class = "UITabBarItem"; title = "Комплекты"; ObjectID = "G8Q-UQ-89I"; */
+"G8Q-UQ-89I.title" = "Комплекты";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "Ham-d2-JHl"; */
+"Ham-d2-JHl.text" = "1";
+
+/* Class = "UITabBarItem"; title = "Корзина"; ObjectID = "OQ1-Ek-IAp"; */
+"OQ1-Ek-IAp.title" = "Корзина";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "QIN-1w-yKb"; */
+"QIN-1w-yKb.text" = "Title";
+
+/* Class = "UITabBarItem"; title = "Товары"; ObjectID = "YVQ-Tn-VFH"; */
+"YVQ-Tn-VFH.title" = "Товары";
+
+/* Class = "UILabel"; text = "Something"; ObjectID = "kVn-sh-JP6"; */
+"kVn-sh-JP6.text" = "Something";
+
+/* Class = "UILabel"; text = "Старинные часы"; ObjectID = "nKa-uf-H2X"; */
+"nKa-uf-H2X.text" = "Старинные часы";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "oLn-tJ-u0A"; */
+"oLn-tJ-u0A.text" = "Label";
+
+/* Class = "UILabel"; text = "89"; ObjectID = "rT0-GN-lLQ"; */
+"rT0-GN-lLQ.text" = "89";
+
+/* Class = "UILabel"; text = "9"; ObjectID = "vyt-Yb-bzC"; */
+"vyt-Yb-bzC.text" = "9";

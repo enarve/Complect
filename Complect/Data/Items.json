@@ -1,0 +1,69 @@
+[
+    {
+        "name": "Разные вещи",
+        "items": [
+            {
+                "name": "Часы",
+                "quantity": 5,
+            },
+            {
+                "name": "Зонт",
+                "quantity": 0
+            },
+            {
+                "name": "Письменный стол",
+                "quantity": 1
+            }
+        ]
+    },
+    {
+        "name": "Книги",
+        "items": [
+            {
+                "name": "English grammar",
+                "quantity": 1
+            },
+            {
+                "name": "1984",
+                "quantity": 4
+            },
+            {
+                "name": "Мир животных",
+                "quantity": 1
+            },
+            {
+                "name": "Alice's adventures in Wonderland",
+                "quantity": 0
+            },
+            {
+                "name": "Die Leiden des jungen Werthers",
+                "quantity": 0
+            },
+            {
+                "name": "Lingua Latina per se Illustrata",
+                "quantity": 1
+            },
+            {
+                "name": "Братья Карамазовы",
+                "quantity": 0
+            },
+            {
+                "name": "Первая научная история войны 1812 года",
+                "quantity": 0
+            }
+        ]
+    },
+    {
+        "name": "Одежда",
+        "items": [
+            {
+                "name": "Толстовка «Superdry» на молнии, мужская, L",
+                "quantity": 1
+            },
+            {
+                "name": "Ботинки «Loake»",
+                "quantity": 3
+            }
+        ]
+    }
+]
