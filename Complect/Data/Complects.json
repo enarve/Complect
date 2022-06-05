@@ -75,6 +75,11 @@
                 "isRequired": true
             },
             {
+                "name": "English grammar",
+                "quantity": 1,
+                "isRequired": true
+            },
+            {
                 "name": "Макароны",
                 "quantity": 3,
                 "isRequired": false

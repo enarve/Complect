@@ -11,7 +11,23 @@ import UIKit
 import CoreData
 
 class ComplectsVC: UITableViewController {
-
+    
+    @IBAction func dropMarks(_ sender: UIBarButtonItem) {
+        let ac = UIAlertController(title: "Сбросить отметки о собранных комплектах?", message: nil, preferredStyle: .alert)
+        ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
+        ac.addAction(UIAlertAction(title: "Сбросить", style: .default, handler: {[weak self] _ in
+            
+            for complect in (self?.complects)! {
+                complect.collected = false
+            }
+            try? self?.container.viewContext.save()
+            self?.tableView.reloadData()
+        }))
+        ac.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
+        present(ac, animated: true, completion: nil)
+                                   
+    }
+    
     private let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
 

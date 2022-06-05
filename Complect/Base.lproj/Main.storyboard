@@ -226,7 +226,13 @@
                             <outlet property="delegate" destination="Ifk-Qy-c8M" id="Cu8-a8-fgB"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="dBT-Xa-ELS"/>
+                    <navigationItem key="navigationItem" id="dBT-Xa-ELS">
+                        <barButtonItem key="rightBarButtonItem" title="Сбросить" id="u5I-py-CCS">
+                            <connections>
+                                <action selector="dropMarks:" destination="Ifk-Qy-c8M" id="46Z-ky-Vb0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PVr-oq-vdF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
