@@ -238,7 +238,7 @@
                                 <action selector="reloadComplects:" destination="Ifk-Qy-c8M" id="yQl-Wd-7XW"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Сбросить" id="u5I-py-CCS">
+                        <barButtonItem key="rightBarButtonItem" title="Сбросить" image="checkmark.circle" catalog="system" id="u5I-py-CCS">
                             <connections>
                                 <action selector="dropMarks:" destination="Ifk-Qy-c8M" id="46Z-ky-Vb0"/>
                             </connections>
@@ -366,7 +366,7 @@
                                 <action selector="reloadData:" destination="6JU-fK-EqR" id="ye3-EO-nXV"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Очистить" id="TxF-Gm-BcJ">
+                        <barButtonItem key="rightBarButtonItem" title="Очистить" image="trash" catalog="system" id="TxF-Gm-BcJ">
                             <connections>
                                 <action selector="cleanList:" destination="6JU-fK-EqR" id="xYt-wn-ra9"/>
                             </connections>
@@ -403,7 +403,9 @@
         <image name="arrow.down.to.line" catalog="system" width="111" height="128"/>
         <image name="bag" catalog="system" width="128" height="128"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="list.number" catalog="system" width="128" height="97"/>
+        <image name="trash" catalog="system" width="121" height="128"/>
         <image name="tray.full" catalog="system" width="128" height="88"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

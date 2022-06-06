@@ -14,7 +14,7 @@ class ComplectsVC: UITableViewController {
     
     @IBAction func reloadComplects(_ sender: UIBarButtonItem) {
         let ac = UIAlertController(title: "Перезагрузить списки товаров и комплектов?", message: nil, preferredStyle: .alert)
-        ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
+        ac.view.tintColor = #colorLiteral(red: 0.4117647059, green: 0.2666666667, blue: 0.7843137255, alpha: 1)
         ac.addAction(UIAlertAction(title: "Перезагрузить", style: .default, handler: {[weak self] _ in
             
             self?.appDelegate.deleteData(context: (self?.container.viewContext)!)
