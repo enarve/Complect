@@ -11,6 +11,18 @@ import UIKit
 import CoreData
 
 class ListVC: UITableViewController {
+    @IBAction func reloadData(_ sender: UIBarButtonItem) {
+        let ac = UIAlertController(title: "Перезагрузить списки товаров и комплектов?", message: nil, preferredStyle: .alert)
+        ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
+        ac.addAction(UIAlertAction(title: "Перезагрузить", style: .default, handler: {[weak self] _ in
+            self?.appDelegate.deleteData(context: (self?.container.viewContext)!)
+            self?.appDelegate.loadItems(context: (self?.container.viewContext)!)
+            self?.appDelegate.loadComplects(context: (self?.container.viewContext)!)
+            self?.presentInfoAlert(title: "Данные перезагружены", message: nil)
+        }))
+        ac.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
+        present(ac, animated: true, completion: nil)
+    }
     @IBAction func cleanList(_ sender: UIBarButtonItem) {
         
         let ac = UIAlertController(title: "Очистить корзину?", message: nil, preferredStyle: .alert)
@@ -21,14 +33,14 @@ class ListVC: UITableViewController {
                 self?.container.viewContext.delete(item)
             }
             try? self?.container.viewContext.save()
-            self?.fetchItems()
-            self?.tableView.reloadData()
         }))
         ac.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
         present(ac, animated: true, completion: nil)
     }
     
     private let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     
     var items: [ListItem] = []
     

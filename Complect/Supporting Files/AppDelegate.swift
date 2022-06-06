@@ -74,6 +74,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
+    
+    
+        func deleteData(context: NSManagedObjectContext) {
+            print("Data deletion")
+            let itemDeleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
+            let itemDeleteRequest = NSBatchDeleteRequest(fetchRequest: itemDeleteFetch)
+            let _ = try? context.execute(itemDeleteRequest)
+    
+    //                try? self?.container.viewContext.save()
+    
+            let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Category")
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+            let _ = try? context.execute(deleteRequest)
+    
+            let complectDeleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Complect")
+            let complectDeleteRequest = NSBatchDeleteRequest(fetchRequest: complectDeleteFetch)
+            let _ = try? context.execute(complectDeleteRequest)
+    
+            let complectItemDeleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ComplectItem")
+            let complectItemDeleteRequest = NSBatchDeleteRequest(fetchRequest: complectItemDeleteFetch)
+            let _ = try? context.execute(complectItemDeleteRequest)
+    
+        }
 
     func loadItems(context: NSManagedObjectContext) {
         

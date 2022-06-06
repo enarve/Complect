@@ -12,6 +12,21 @@ import CoreData
 
 class ComplectsVC: UITableViewController {
     
+    @IBAction func reloadComplects(_ sender: UIBarButtonItem) {
+        let ac = UIAlertController(title: "Перезагрузить списки товаров и комплектов?", message: nil, preferredStyle: .alert)
+        ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
+        ac.addAction(UIAlertAction(title: "Перезагрузить", style: .default, handler: {[weak self] _ in
+            
+            self?.appDelegate.deleteData(context: (self?.container.viewContext)!)
+            self?.appDelegate.loadItems(context: (self?.container.viewContext)!)
+            self?.appDelegate.loadComplects(context: (self?.container.viewContext)!)
+            self?.fetchComplects()
+            self?.presentInfoAlert(title: "Данные перезагружены", message: nil)
+
+        }))
+        ac.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
+        present(ac, animated: true, completion: nil)
+    }
     @IBAction func dropMarks(_ sender: UIBarButtonItem) {
         let ac = UIAlertController(title: "Сбросить отметки о собранных комплектах?", message: nil, preferredStyle: .alert)
         ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
@@ -124,13 +139,6 @@ class ComplectsVC: UITableViewController {
             ac.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
             present(ac, animated: true, completion: nil)
         }
-    }
-    
-    private func presentInfoAlert(title: String?, message: String?) {
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
-        ac.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
-        present(ac, animated: true, completion: nil)
     }
     
     private func fetchComplects() {
@@ -390,4 +398,13 @@ class ComplectsVC: UITableViewController {
     }
     */
 
+}
+
+extension UIViewController {
+    func presentInfoAlert(title: String?, message: String?) {
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
+        ac.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
+        present(ac, animated: true, completion: nil)
+    }
 }

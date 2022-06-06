@@ -73,7 +73,13 @@
                             <outlet property="delegate" destination="lkB-PA-R3g" id="9BV-dh-Gul"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="XUJ-qe-FIj"/>
+                    <navigationItem key="navigationItem" id="XUJ-qe-FIj">
+                        <barButtonItem key="leftBarButtonItem" title="Перезагрузить" image="arrow.clockwise" catalog="system" id="oG2-Ve-WmZ">
+                            <connections>
+                                <action selector="reloadItems:" destination="lkB-PA-R3g" id="HEv-ZV-50Q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H50-9f-kxq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -227,6 +233,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="dBT-Xa-ELS">
+                        <barButtonItem key="leftBarButtonItem" title="Перезагрузить" image="arrow.clockwise" catalog="system" id="nOf-To-V8j">
+                            <connections>
+                                <action selector="reloadComplects:" destination="Ifk-Qy-c8M" id="yQl-Wd-7XW"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Сбросить" id="u5I-py-CCS">
                             <connections>
                                 <action selector="dropMarks:" destination="Ifk-Qy-c8M" id="46Z-ky-Vb0"/>
@@ -350,6 +361,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="0VI-f2-nem">
+                        <barButtonItem key="leftBarButtonItem" title="Перезагрузить" image="arrow.clockwise" catalog="system" id="lZv-Gi-9tV">
+                            <connections>
+                                <action selector="reloadData:" destination="6JU-fK-EqR" id="ye3-EO-nXV"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Очистить" id="TxF-Gm-BcJ">
                             <connections>
                                 <action selector="cleanList:" destination="6JU-fK-EqR" id="xYt-wn-ra9"/>
@@ -383,6 +399,7 @@
     </scenes>
     <color key="tintColor" red="0.3911861123" green="0.27337818959999999" blue="0.75686275960000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.down.to.line" catalog="system" width="111" height="128"/>
         <image name="bag" catalog="system" width="128" height="128"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>

@@ -9,8 +9,23 @@ import UIKit
 import CoreData
 
 class ItemsVC: UITableViewController {
+    @IBAction func reloadItems(_ sender: UIBarButtonItem) {
+        let ac = UIAlertController(title: "Перезагрузить списки товаров и комплектов?", message: nil, preferredStyle: .alert)
+        ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
+        ac.addAction(UIAlertAction(title: "Перезагрузить", style: .default, handler: {[weak self] _ in
+            self?.appDelegate.deleteData(context: (self?.container.viewContext)!)
+            self?.appDelegate.loadItems(context: (self?.container.viewContext)!)
+            self?.appDelegate.loadComplects(context: (self?.container.viewContext)!)
+
+            self?.fetchCategories()
+            self?.presentInfoAlert(title: "Данные перезагружены", message: nil)
+        }))
+        ac.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
+        present(ac, animated: true, completion: nil)
+    }
     
     private let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     var categories: [Category] = []
     
