@@ -33,6 +33,8 @@ class ListVC: UITableViewController {
                 self?.container.viewContext.delete(item)
             }
             try? self?.container.viewContext.save()
+            self?.fetchItems()
+            self?.tableView.reloadData()
         }))
         ac.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
         present(ac, animated: true, completion: nil)
