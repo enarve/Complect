@@ -349,7 +349,13 @@
                             <outlet property="delegate" destination="6JU-fK-EqR" id="k5K-Xe-Mrb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="0VI-f2-nem"/>
+                    <navigationItem key="navigationItem" id="0VI-f2-nem">
+                        <barButtonItem key="rightBarButtonItem" title="Очистить" id="TxF-Gm-BcJ">
+                            <connections>
+                                <action selector="cleanList:" destination="6JU-fK-EqR" id="xYt-wn-ra9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zyd-2B-Hhp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

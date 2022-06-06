@@ -11,7 +11,23 @@ import UIKit
 import CoreData
 
 class ListVC: UITableViewController {
-
+    @IBAction func cleanList(_ sender: UIBarButtonItem) {
+        
+        let ac = UIAlertController(title: "Очистить корзину?", message: nil, preferredStyle: .alert)
+        ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
+        ac.addAction(UIAlertAction(title: "Очистить", style: .default, handler: {[weak self] _ in
+            
+            for item in (self?.items)! {
+                self?.container.viewContext.delete(item)
+            }
+            try? self?.container.viewContext.save()
+            self?.fetchItems()
+            self?.tableView.reloadData()
+        }))
+        ac.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
+        present(ac, animated: true, completion: nil)
+    }
+    
     private let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     
     var items: [ListItem] = []
