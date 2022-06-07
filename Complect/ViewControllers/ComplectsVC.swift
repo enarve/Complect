@@ -61,7 +61,13 @@ class ComplectsVC: UITableViewController {
         var thereWereErrors = false
         var somethingAddedToList = false
         if let complect = complect {
-            let ac = UIAlertController(title: "Собрать «\(complect.name ?? "")»?", message: nil, preferredStyle: .alert)
+            var title = ""
+            if complect.collected {
+                title = "Собрать «\(complect.name ?? "")» повторно?"
+            } else {
+                title = "Собрать «\(complect.name ?? "")»?"
+            }
+            let ac = UIAlertController(title: title, message: nil, preferredStyle: .alert)
             ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
             ac.addAction(UIAlertAction(title: "Собрать", style: .default, handler: {[weak self] _ in
                 
@@ -306,12 +312,16 @@ class ComplectsVC: UITableViewController {
                 cell.complect = complects[indexPath.section]
                 cell.infoLabel.text = complects[indexPath.section].text
                 cell.titleLabel.text = complects[indexPath.section].name
+                let largeConfig = UIImage.SymbolConfiguration(scale: .large)
                 if complects[indexPath.section].collected {
-                    cell.buyButton.isHidden = true
-                    cell.checkmarkImageView.isHidden = false
+                    cell.buyButton.setImage(UIImage(systemName: "checkmark", withConfiguration: largeConfig), for: .normal)
+//                    cell.buyButton.isHidden = true
+//                    cell.checkmarkImageView.isHidden = false
                 } else {
-                    cell.buyButton.isHidden = false
-                    cell.checkmarkImageView.isHidden = true
+                    cell.buyButton.setImage(UIImage(systemName: "arrow.down.to.line", withConfiguration: largeConfig), for: .normal)
+                    
+//                    cell.buyButton.isHidden = false
+//                    cell.checkmarkImageView.isHidden = true
                 }
             }
         } else {
