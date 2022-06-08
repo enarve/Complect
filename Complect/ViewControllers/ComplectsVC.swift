@@ -33,7 +33,7 @@ class ComplectsVC: UITableViewController {
         ac.addAction(UIAlertAction(title: "Сбросить", style: .default, handler: {[weak self] _ in
             
             for complect in (self?.complects)! {
-                complect.collected = false
+                complect.isCollected = false
             }
             try? self?.container.viewContext.save()
             self?.tableView.reloadData()
@@ -62,7 +62,7 @@ class ComplectsVC: UITableViewController {
         var somethingAddedToList = false
         if let complect = complect {
             var title = ""
-            if complect.collected {
+            if complect.isCollected {
                 title = "Собрать «\(complect.name ?? "")» повторно?"
             } else {
                 title = "Собрать «\(complect.name ?? "")»?"
@@ -126,7 +126,7 @@ class ComplectsVC: UITableViewController {
                         
                     }
                     if !thereWereErrors {
-                        complect.collected = true
+                        complect.isCollected = true
                         self?.tableView.reloadData()
                         try? self?.container.viewContext.save()
                         if somethingAddedToList {
@@ -161,14 +161,17 @@ class ComplectsVC: UITableViewController {
     
     private func fetchItems(in complect: Complect) -> [ComplectItem]? {
         let context = container.viewContext
+        let day = complect.day
         if let name = complect.name {
-            let predicate = NSPredicate(format: "ANY complect.name like %@", name)
+            
+            let predicate = NSPredicate(format: "ANY complect.indexName like %@", name + "\(day)")
+            
             let request: NSFetchRequest<ComplectItem> = ComplectItem.fetchRequest()
             let nameSort = NSSortDescriptor(key: "name", ascending: true)
             let requireSort = NSSortDescriptor(key: "isRequired", ascending: false)
             request.sortDescriptors = [requireSort, nameSort]
             request.predicate = predicate
-            return try? context.fetch(request)
+            return try? context.fetch(request) //.uniqued()
         }
         return nil
     }
@@ -313,7 +316,7 @@ class ComplectsVC: UITableViewController {
                 cell.infoLabel.text = complects[indexPath.section].text
                 cell.titleLabel.text = complects[indexPath.section].name
                 let largeConfig = UIImage.SymbolConfiguration(scale: .large)
-                if complects[indexPath.section].collected {
+                if complects[indexPath.section].isCollected {
                     cell.buyButton.setImage(UIImage(systemName: "checkmark", withConfiguration: largeConfig), for: .normal)
 //                    cell.buyButton.isHidden = true
 //                    cell.checkmarkImageView.isHidden = false
@@ -349,7 +352,7 @@ class ComplectsVC: UITableViewController {
                         cell.titleLabel.textColor = UIColor.label
                         cell.switcher.isOn = false
                     }
-                    if complects[indexPath.section].collected {
+                    if complects[indexPath.section].isCollected {
                         cell.switcher.isEnabled = false
                     } else {
                         cell.switcher.isEnabled = true
@@ -416,5 +419,14 @@ extension UIViewController {
         ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
         ac.addAction(UIAlertAction(title: "Ок", style: .default, handler: nil))
         present(ac, animated: true, completion: nil)
+    }
+}
+
+// MARK: - Extensions
+
+extension Sequence where Element: Hashable {
+    func uniqued() -> [Element] {
+        var set = Set<Element>()
+        return filter { set.insert($0).inserted }
     }
 }

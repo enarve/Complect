@@ -3,7 +3,7 @@
         "name": "Комплект на понедельник",
         "text": "Этот комплект приготовлен на понедельник",
         "day": 1,
-        "collected": false,
+        "isCollected": false,
         "items": [
             {
                 "name": "Часы",
@@ -31,7 +31,7 @@
         "name": "Второй комплект на понедельник",
         "text": "Этот комплект тоже приготовлен на понедельник",
         "day": 1,
-        "collected": false,
+        "isCollected": false,
         "items": [
             {
                 "name": "Мир животных",
@@ -49,7 +49,61 @@
         "name": "Complect",
         "text": "Hello",
         "day": 1,
-        "collected": false,
+        "isCollected": false,
+        "items": [
+            {
+                "name": "Friend",
+                "quantity": 139,
+                "isRequired": true
+            },
+            {
+                "name": "Two straws",
+                "quantity": 2,
+                "isRequired": true
+            }
+        ]
+    },
+    {
+        "name": "Complect",
+        "text": "Hello",
+        "day": 1,
+        "isCollected": false,
+        "items": [
+            {
+                "name": "Friend",
+                "quantity": 139,
+                "isRequired": true
+            },
+            {
+                "name": "Two straws",
+                "quantity": 2,
+                "isRequired": true
+            }
+        ]
+    },
+    {
+        "name": "Complect",
+        "text": "Hello",
+        "day": 1,
+        "isCollected": false,
+        "items": [
+            {
+                "name": "Friend",
+                "quantity": 139,
+                "isRequired": true
+            },
+            {
+                "name": "Two straws",
+                "quantity": 2,
+                "isRequired": true
+            }
+        ]
+    },
+    {
+        "name": "Complect",
+        "text": "Hello",
+        "day": 4,
+        "isCollected": false,
         "items": [
             {
                 "name": "Friend",
@@ -67,7 +121,7 @@
         "name": "Комплект для Лёши",
         "text": "Передать Лёше",
         "day": 2,
-        "collected": false,
+        "isCollected": false,
         "items": [
             {
                 "name": "Зонт",

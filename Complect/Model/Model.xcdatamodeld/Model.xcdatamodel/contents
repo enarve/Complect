@@ -5,8 +5,9 @@
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="category" inverseEntity="Item"/>
     </entity>
     <entity name="Complect" representedClassName="Complect" syncable="YES" codeGenerationType="category">
-        <attribute name="collected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="day" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="indexName" optional="YES" attributeType="String"/>
+        <attribute name="isCollected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="text" optional="YES" attributeType="String"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ComplectItem" inverseName="complect" inverseEntity="ComplectItem"/>
@@ -29,7 +30,7 @@
     </entity>
     <elements>
         <element name="Category" positionX="-59.75" positionY="-6.44140625" width="128" height="73"/>
-        <element name="Complect" positionX="183.87890625" positionY="-8.41015625" width="128" height="118"/>
+        <element name="Complect" positionX="183.87890625" positionY="-8.41015625" width="128" height="133"/>
         <element name="ComplectItem" positionX="186.20703125" positionY="-132.9609375" width="128" height="118"/>
         <element name="Item" positionX="-52.2890625" positionY="-130.81640625" width="128" height="88"/>
         <element name="ListItem" positionX="382.30078125" positionY="-131.0234375" width="128" height="73"/>

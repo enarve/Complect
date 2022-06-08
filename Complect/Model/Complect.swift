@@ -14,7 +14,7 @@ import CoreData
 class Complect: NSManagedObject, Codable {
     
     private enum CodingKeys: String, CodingKey {
-        case name, text, day, items, collected
+        case name, text, day, items, isCollected
     }
     
     func encode(to encoder: Encoder) throws {
@@ -22,7 +22,7 @@ class Complect: NSManagedObject, Codable {
             try container.encode(name, forKey: .name)
             try container.encode(text, forKey: .text)
             try container.encode(day, forKey: .day)
-            try container.encode(day, forKey: .collected)
+            try container.encode(isCollected, forKey: .isCollected)
     }
     
     required convenience init(from decoder: Decoder) throws {
@@ -37,9 +37,30 @@ class Complect: NSManagedObject, Codable {
         self.name = try container.decode(String.self, forKey: .name)
         self.text = try container.decode(String.self, forKey: .text)
         self.day = try container.decode(Int64.self, forKey: .day)
-        self.collected = try container.decode(Bool.self, forKey: .collected)
+        self.isCollected = try container.decode(Bool.self, forKey: .isCollected)
         
         self.items = try NSSet(array: container.decode([ComplectItem].self, forKey: .items))
+        
+        self.indexName = self.name! + "\(self.day)"
+        var duplicateNotFound = true
+        repeat {
+            duplicateNotFound = true
+            if let indexName = self.indexName {
+                let predicate = NSPredicate(format: "indexName = %@", indexName)
+                let request: NSFetchRequest<Complect> = Complect.fetchRequest()
+                request.predicate = predicate
+                if let result = try? context.fetch(request) {
+                    if !result.isEmpty {
+                        if result.count > 1 {
+                            self.indexName = indexName + "0"
+    //                        print(self.indexName!)
+                            duplicateNotFound = false
+                        }
+                    }
+                }
+            }
+        } while !duplicateNotFound
+        
         
 //        let itemNames = try container.decode([String].self, forKey: .items)
 //        var probableItems: [Item] = []
