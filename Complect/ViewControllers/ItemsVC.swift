@@ -14,12 +14,15 @@ class ItemsVC: UITableViewController {
         let ac = UIAlertController(title: "Добавление товара", message: nil, preferredStyle: .alert)
         ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
         ac.addTextField()
-        ac.textFields?[0].placeholder = "Название товара"
+        ac.textFields?[0].placeholder = "Название"
+        ac.textFields?[0].font = UIFont.systemFont(ofSize: 17.0)
         ac.addTextField()
-        ac.textFields?[1].placeholder = "Категория товара"
+        ac.textFields?[1].placeholder = "Категория"
+        ac.textFields?[1].font = UIFont.systemFont(ofSize: 17.0)
         ac.addTextField()
-        ac.textFields?[2].placeholder = "Число"
+        ac.textFields?[2].placeholder = "Количество"
         ac.textFields?[2].keyboardType = .numberPad
+        ac.textFields?[2].font = UIFont.systemFont(ofSize: 17.0)
         let submitAction = UIAlertAction(title: "Добавить", style: .default) {
             [weak self, weak ac] action in
             guard let itemName = ac?.textFields?[0].text else { return }

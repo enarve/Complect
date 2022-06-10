@@ -79,11 +79,10 @@ class ComplectsVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
     }
     
     func changeDay(in complect: Complect?) {
-        let ac = UIAlertController(title: "Перенести комплект", message: "\n\n\n\n\n\n", preferredStyle: .alert)
+        let ac = UIAlertController(title: "Перенести комплект", message: "\n\n\n\n\n\n\n", preferredStyle: .alert)
         ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
         ac.modalPresentationStyle = .popover
-        
-        let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
+        let pickerFrame = UIPickerView(frame: CGRect(x: 0, y: 40, width: 270, height: 140))
         ac.view.addSubview(pickerFrame)
         pickerFrame.dataSource = self
         pickerFrame.delegate = self
@@ -364,11 +363,13 @@ class ComplectsVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
 //                    cell.buyButton.setImage(UIImage(systemName: "checkmark", withConfiguration: largeConfig), for: .normal)
                     cell.buyButton.isHidden = true
                     cell.checkmarkImageView.isHidden = false
+                    cell.dayButton.isHidden = true
                 } else {
 //                    cell.buyButton.setImage(UIImage(systemName: "arrow.down.to.line", withConfiguration: largeConfig), for: .normal)
                     
                     cell.buyButton.isHidden = false
                     cell.checkmarkImageView.isHidden = true
+                    cell.dayButton.isHidden = false
                 }
             }
         } else {

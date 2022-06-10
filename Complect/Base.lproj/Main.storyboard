@@ -129,14 +129,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhH-5o-2qC">
-                                            <rect key="frame" x="324" y="30" width="30" height="28"/>
+                                            <rect key="frame" x="324" y="31" width="30" height="26"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="7gV-ZA-fxe"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal">
-                                                <imageReference key="image" image="tray.and.arrow.down" catalog="system" symbolScale="large"/>
+                                                <imageReference key="image" image="arrow.down.to.line" catalog="system" symbolScale="large"/>
                                             </state>
                                             <connections>
                                                 <action selector="buyButton:" destination="NyJ-iq-aYE" eventType="touchUpInside" id="kfy-qb-hgR"/>
@@ -169,9 +169,9 @@
                                             <imageReference key="image" image="checkmark" catalog="system" symbolScale="small"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9u-VB-Owo">
-                                            <rect key="frame" x="278" y="31.5" width="26" height="25"/>
+                                            <rect key="frame" x="277" y="31" width="26" height="26"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="25" id="Lgw-qQ-FqO"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="Lgw-qQ-FqO"/>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="aK5-NV-sLN"/>
                                             </constraints>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -184,7 +184,7 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="BhH-5o-2qC" firstAttribute="leading" secondItem="P9u-VB-Owo" secondAttribute="trailing" constant="20" id="0iw-xY-LKZ"/>
+                                        <constraint firstItem="BhH-5o-2qC" firstAttribute="leading" secondItem="P9u-VB-Owo" secondAttribute="trailing" constant="21" id="0iw-xY-LKZ"/>
                                         <constraint firstItem="P9u-VB-Owo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OHs-AP-PJ2" secondAttribute="trailing" constant="20" id="3wC-8l-imh"/>
                                         <constraint firstItem="P9u-VB-Owo" firstAttribute="centerY" secondItem="Zw8-AY-WZs" secondAttribute="centerY" id="5JX-2M-93b"/>
                                         <constraint firstItem="OHs-AP-PJ2" firstAttribute="leading" secondItem="Zw8-AY-WZs" secondAttribute="leadingMargin" id="5NS-6p-hb2"/>
@@ -199,6 +199,7 @@
                                 <connections>
                                     <outlet property="buyButton" destination="BhH-5o-2qC" id="o2T-IV-dbw"/>
                                     <outlet property="checkmarkImageView" destination="1o1-0Q-sh7" id="khN-eJ-98U"/>
+                                    <outlet property="dayButton" destination="P9u-VB-Owo" id="5My-j8-jZo"/>
                                     <outlet property="infoLabel" destination="oLn-tJ-u0A" id="cff-NI-FRP"/>
                                     <outlet property="titleLabel" destination="QIN-1w-yKb" id="TqT-lX-gVA"/>
                                 </connections>
@@ -421,6 +422,7 @@
     <color key="tintColor" red="0.3911861123" green="0.27337818959999999" blue="0.75686275960000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <image name="arrow.down.to.line" catalog="system" width="111" height="128"/>
         <image name="bag" catalog="system" width="128" height="128"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
@@ -428,7 +430,6 @@
         <image name="list.number" catalog="system" width="128" height="97"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="trash" catalog="system" width="121" height="128"/>
-        <image name="tray.and.arrow.down" catalog="system" width="128" height="109"/>
         <image name="tray.full" catalog="system" width="128" height="88"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

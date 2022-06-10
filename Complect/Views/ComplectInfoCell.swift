@@ -13,6 +13,7 @@ class ComplectInfoCell: UITableViewCell {
 
     var complect: Complect? = nil
     
+    @IBOutlet weak var dayButton: UIButton!
     @IBAction func setDay(_ sender: UIButton) {
         if let complectsVC = self.findViewController() as? ComplectsVC {
             complectsVC.changeDay(in: complect)
