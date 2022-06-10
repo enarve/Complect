@@ -9,6 +9,67 @@ import UIKit
 import CoreData
 
 class ItemsVC: UITableViewController {
+    
+    @IBAction func addItem(_ sender: UIBarButtonItem) {
+        let ac = UIAlertController(title: "Добавление товара", message: nil, preferredStyle: .alert)
+        ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
+        ac.addTextField()
+        ac.textFields?[0].placeholder = "Название товара"
+        ac.addTextField()
+        ac.textFields?[1].placeholder = "Категория товара"
+        ac.addTextField()
+        ac.textFields?[2].placeholder = "Число"
+        ac.textFields?[2].keyboardType = .numberPad
+        let submitAction = UIAlertAction(title: "Добавить", style: .default) {
+            [weak self, weak ac] action in
+            guard let itemName = ac?.textFields?[0].text else { return }
+            guard let categoryName = ac?.textFields?[1].text else { return }
+            guard let quantityString = ac?.textFields?[2].text else { return }
+            print(itemName, categoryName, Int(quantityString) ?? 0)
+            
+            let context = (self?.container.viewContext)!
+            
+            // fetching category
+            var category = Category()
+            let predicate = NSPredicate(format: "name = %@", categoryName.lowercased())
+            let request: NSFetchRequest<Category> = Category.fetchRequest()
+            request.predicate = predicate
+            if let supposedCategories = try? context.fetch(request) {
+                if let supposedCategory = supposedCategories.first {
+                    category = supposedCategory
+                } else {
+                    category = Category(context: context)
+                    category.name = categoryName.lowercased()
+                }
+            }
+            
+            // fetching item
+            var item = Item()
+            let itemPredicate = NSPredicate(format: "name = %@", itemName)
+            let itemRequest: NSFetchRequest<Item> = Item.fetchRequest()
+            itemRequest.predicate = itemPredicate
+            if let supposedItems = try? context.fetch(itemRequest) {
+                if let supposedItem = supposedItems.first {
+                    item = supposedItem
+                    item.quantity += Int64(quantityString) ?? 0
+                } else {
+                    item = Item(context: context)
+                    item.name = itemName
+                    item.quantity = Int64(quantityString) ?? 0
+                    item.category = category
+                }
+            }
+            
+            try? context.save()
+            self?.fetchCategories()
+        }
+        
+        ac.addAction(submitAction)
+        ac.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
+        present(ac, animated: true)
+        
+    }
+    
     @IBAction func reloadItems(_ sender: UIBarButtonItem) {
         let ac = UIAlertController(title: "Перезагрузить списки товаров и комплектов?", message: nil, preferredStyle: .alert)
         ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
@@ -52,6 +113,18 @@ class ItemsVC: UITableViewController {
         }
         return nil
         
+    }
+    
+    func checkForEmptyCategories() {
+        for category in categories {
+            if let items = fetchItems(in: category) {
+                if items.isEmpty {
+                    container.viewContext.delete(category)
+                    try? container.viewContext.save()
+                    fetchCategories()
+                }
+            }
+        }
     }
     
     // MARK: VCLC
@@ -115,6 +188,28 @@ class ItemsVC: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if let items = fetchItems(in: categories[indexPath.section]) {
+                container.viewContext.delete(items[indexPath.row])
+                try? container.viewContext.save()
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                fetchCategories()
+                checkForEmptyCategories()
+            }
+            
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
     }
 }
 

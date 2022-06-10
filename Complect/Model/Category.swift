@@ -31,7 +31,7 @@ class Category: NSManagedObject, Codable {
         self.init(entity: entity, insertInto: context)
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.name = try container.decode(String.self, forKey: .name)
+        self.name = try container.decode(String.self, forKey: .name).lowercased()
         self.items = try NSSet(array: container.decode([Item].self, forKey: .items))
     }
 }

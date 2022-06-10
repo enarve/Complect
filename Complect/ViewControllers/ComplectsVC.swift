@@ -10,7 +10,7 @@
 import UIKit
 import CoreData
 
-class ComplectsVC: UITableViewController {
+class ComplectsVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBAction func reloadComplects(_ sender: UIBarButtonItem) {
         let ac = UIAlertController(title: "Перезагрузить списки товаров и комплектов?", message: nil, preferredStyle: .alert)
@@ -48,6 +48,27 @@ class ComplectsVC: UITableViewController {
 
     var complects: [Complect] = []
     
+    var dayChoices = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
+    var pickerDayValue: Int = 1
+    
+    var pickerView = UIPickerView()
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+            return 1
+        }
+
+        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            return dayChoices.count
+        }
+        
+        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+            return dayChoices[row]
+        }
+        
+        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+            pickerDayValue = row + 1
+        }
+    
     func switchItem(item: ComplectItem?) {
         if let item = item {
             item.isIncluded.toggle()
@@ -55,6 +76,29 @@ class ComplectsVC: UITableViewController {
 //            tableView.reloadData()
         }
         
+    }
+    
+    func changeDay(in complect: Complect?) {
+        let ac = UIAlertController(title: "Перенести комплект", message: "\n\n\n\n\n\n", preferredStyle: .alert)
+        ac.view.tintColor = #colorLiteral(red: 0.4122543931, green: 0.2670552135, blue: 0.784809649, alpha: 1)
+        ac.modalPresentationStyle = .popover
+        
+        let pickerFrame = UIPickerView(frame: CGRect(x: 5, y: 20, width: 250, height: 140))
+        ac.view.addSubview(pickerFrame)
+        pickerFrame.dataSource = self
+        pickerFrame.delegate = self
+
+        ac.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
+        ac.addAction(UIAlertAction(title: "Oк", style: .default, handler: { [weak self] (UIAlertAction) in
+                    
+            complect?.day = Int64(self!.pickerDayValue)
+//            complect?.indexName =
+            try? self?.container.viewContext.save()
+            self?.fetchComplects()
+            self?.pickerDayValue = 1
+                
+                }))
+        present(ac, animated: true)
     }
     
     func collect(complect: Complect?) {
@@ -161,10 +205,10 @@ class ComplectsVC: UITableViewController {
     
     private func fetchItems(in complect: Complect) -> [ComplectItem]? {
         let context = container.viewContext
-        let day = complect.day
-        if let name = complect.name {
+        let _ = complect.day
+        if let _ = complect.name {
             
-            let predicate = NSPredicate(format: "ANY complect.indexName like %@", name + "\(day)")
+            let predicate = NSPredicate(format: "ANY complect.indexName like %@", (complect.indexName)!)
             
             let request: NSFetchRequest<ComplectItem> = ComplectItem.fetchRequest()
             let nameSort = NSSortDescriptor(key: "name", ascending: true)
@@ -234,13 +278,13 @@ class ComplectsVC: UITableViewController {
     
     private func getDayString(number: Int) -> String {
         switch number {
-            case 1: return "Понедельник"
-            case 2: return "Вторник"
-            case 3: return "Среда"
-            case 4: return "Четверг"
-            case 5: return "Пятница"
-            case 6: return "Суббота"
-            case 7: return "Воскресенье"
+            case 1: return dayChoices[0]
+            case 2: return dayChoices[1]
+            case 3: return dayChoices[2]
+            case 4: return dayChoices[3]
+            case 5: return dayChoices[4]
+            case 6: return dayChoices[5]
+            case 7: return dayChoices[6]
             default: return ""
         }
     }
@@ -315,16 +359,16 @@ class ComplectsVC: UITableViewController {
                 cell.complect = complects[indexPath.section]
                 cell.infoLabel.text = complects[indexPath.section].text
                 cell.titleLabel.text = complects[indexPath.section].name
-                let largeConfig = UIImage.SymbolConfiguration(scale: .large)
+//                let largeConfig = UIImage.SymbolConfiguration(scale: .large)
                 if complects[indexPath.section].isCollected {
-                    cell.buyButton.setImage(UIImage(systemName: "checkmark", withConfiguration: largeConfig), for: .normal)
-//                    cell.buyButton.isHidden = true
-//                    cell.checkmarkImageView.isHidden = false
+//                    cell.buyButton.setImage(UIImage(systemName: "checkmark", withConfiguration: largeConfig), for: .normal)
+                    cell.buyButton.isHidden = true
+                    cell.checkmarkImageView.isHidden = false
                 } else {
-                    cell.buyButton.setImage(UIImage(systemName: "arrow.down.to.line", withConfiguration: largeConfig), for: .normal)
+//                    cell.buyButton.setImage(UIImage(systemName: "arrow.down.to.line", withConfiguration: largeConfig), for: .normal)
                     
-//                    cell.buyButton.isHidden = false
-//                    cell.checkmarkImageView.isHidden = true
+                    cell.buyButton.isHidden = false
+                    cell.checkmarkImageView.isHidden = true
                 }
             }
         } else {

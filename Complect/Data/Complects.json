@@ -1,7 +1,7 @@
 [
     {
-        "name": "Комплект на понедельник",
-        "text": "Этот комплект приготовлен на понедельник",
+        "name": "Комплект c часами",
+        "text": "Этот комплект содержит часы",
         "day": 1,
         "isCollected": false,
         "items": [
@@ -28,8 +28,8 @@
         ]
     },
     {
-        "name": "Второй комплект на понедельник",
-        "text": "Этот комплект тоже приготовлен на понедельник",
+        "name": "Новый комплект",
+        "text": "Книжка и ботинки",
         "day": 1,
         "isCollected": false,
         "items": [
@@ -40,42 +40,6 @@
             },
             {
                 "name": "Ботинки «Loake»",
-                "quantity": 2,
-                "isRequired": true
-            }
-        ]
-    },
-    {
-        "name": "Complect",
-        "text": "Hello",
-        "day": 1,
-        "isCollected": false,
-        "items": [
-            {
-                "name": "Friend",
-                "quantity": 139,
-                "isRequired": true
-            },
-            {
-                "name": "Two straws",
-                "quantity": 2,
-                "isRequired": true
-            }
-        ]
-    },
-    {
-        "name": "Complect",
-        "text": "Hello",
-        "day": 1,
-        "isCollected": false,
-        "items": [
-            {
-                "name": "Friend",
-                "quantity": 139,
-                "isRequired": true
-            },
-            {
-                "name": "Two straws",
                 "quantity": 2,
                 "isRequired": true
             }

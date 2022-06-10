@@ -13,6 +13,11 @@ class ComplectInfoCell: UITableViewCell {
 
     var complect: Complect? = nil
     
+    @IBAction func setDay(_ sender: UIButton) {
+        if let complectsVC = self.findViewController() as? ComplectsVC {
+            complectsVC.changeDay(in: complect)
+        }
+    }
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var buyButton: UIButton!
